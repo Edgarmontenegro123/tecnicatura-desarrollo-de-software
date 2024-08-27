@@ -11,16 +11,11 @@
     let distance = vel * time;
     Mostrar (distance, "La distancia recorrida es: ")
 */
-
 function distance(vel, time){
     let distance = vel * time
-    console.log(`La distancia recorrida es de ${distance}m.`)
+    return(`La distancia recorrida es de ${distance}m.`)
 }
-
-let vel = 2
-let time = 5
-
-distance(vel, time)
+console.log(distance(2, 1))
 
 /* 
     2) Se necesita obtener el promedio de un estudiante a partir de sus tres notas parciales ingresadas por el usuario.
@@ -38,13 +33,9 @@ distance(vel, time)
 // Solución 1
 function average(note1, note2, note3) {
     let average = (note1 + note2 + note3) / 3 
-    console.log(`El promedio de notas del estudiante es de : ${average}, solución 1`)
+    return(`El promedio de notas del estudiante es de : ${average}, solución 1`)
 }
-let note1 = 5
-let note2 = 8
-let note3 = 3
-
-average(note1, note2, note3)
+console.log(average(5, 8, 3))
 
 // Solución 2
 function average2(notes) {
@@ -74,7 +65,6 @@ let students = [
     {notes: [6, 7, 9]}, // Student 2
     {notes: [3, 4, 7]}, // Student 3
 ]
-
 console.log(averageForStudents(students))
 
 
@@ -99,7 +89,6 @@ function finalScore(correct, incorrect, nil) {
     let finScore = (correct * 4) + (incorrect * -1) + (nil * 0)
     return (`El puntaje final es: ${finScore}`)
 }
-
 console.log(finalScore(5, 2, 4))
 
 /* 
@@ -122,7 +111,6 @@ function convertToSeconds(hours, minutes) {
     let seconds = (hours * 3600) + (minutes * 60)
     return (`La cantidad de segundos es ${seconds}`)
 }
-
 console.log(convertToSeconds(2, 30))
 
 // B
