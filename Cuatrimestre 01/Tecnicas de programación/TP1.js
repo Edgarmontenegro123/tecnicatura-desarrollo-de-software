@@ -43,8 +43,7 @@ function average2(notes) {
     for(let i = 0; i < notes.length; i++){
         sum += notes[i]
     }
-    let avg = sum / notes.length
-    return avg
+    return sum / notes.length
 }
 
 /* let notes = [3, 6, 9, 9]
