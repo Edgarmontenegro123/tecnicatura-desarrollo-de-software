@@ -67,7 +67,8 @@ function palindrome(str) {
     }
     return result
 }
-console.log(palindrome("anita lava la tina"))
+console.log(palindrome("anit"))
+console.log(palindrome("menem"))
 
 /*
     3. Dado un cuadrado cuyo lado está definido por dos puntos:
