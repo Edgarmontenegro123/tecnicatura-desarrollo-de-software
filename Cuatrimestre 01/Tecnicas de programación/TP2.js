@@ -55,7 +55,7 @@ function palindrome(str) {
     else{
         while(i < j) {
             if(str.charAt(i) !== str.charAt(j)) {
-                result = `This string ${str} is not a palindrome`
+                result = `The string ${str} is not a palindrome`
                 break
             }
             i++
@@ -72,8 +72,8 @@ console.log(palindrome("menem"))
 
 /*
     3. Dado un cuadrado cuyo lado está definido por dos puntos:
-       El origen de los ejes coordenados (0,0) y el punto (0,y), donde y es un numero ingresado por el usuario; solicitar se ingrese un nuevo punto (x1,y1) e informar al usuario
-       si el punto está dentro del cuadrado o no.
+       El origen de los ejes coordenados (0,0) y el punto (0,y), donde y es un número ingresado por el usuario; solicitar se ingrese un nuevo punto (x1,y1)
+       e informar al usuario si el punto está dentro del cuadrado o no.
 */
 
 
