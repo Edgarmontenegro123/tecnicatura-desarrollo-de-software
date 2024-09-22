@@ -1,10 +1,14 @@
 // TP3 - Técnicas
 
+const readLine = require('readline')
+const rl = readLine.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
 /*1. realizar un algoritmo que muestre por pantalla todos los números pares que hay entre 1 y 50. No utilizar la función nativa de javascript %,
      emplear funciones definidas en el programa en su lugar.
 1.2 agregar después de listar los números divisibles por dos, los divisibles por tres y luego por cinco.*/
-
-
 function calculateResto(num, div) {
     while(num >= div) {
         num -= div;
@@ -54,20 +58,78 @@ function evenNumFromOneToFifty() {
     }
     return `Arr: ${arr}, Arr2: ${arr2}, Arr3: ${arr3}, Arr4: ${arr4}`;
 }
-
 console.log(evenNumFromOneToFifty());
-
-
-
-
-
 
 /*2. Realizar un algoritmo que permita al usuario ingresar un número por teclado y muestre por pantalla si el número es primo (un número es primo cuando únicamente es divisible por sí mismo y por uno).
 2.1 Mostrar por pantalla los primeros veinte números primos.*/
+function primeNumber() {
+    rl.question("Ingresa un número para saber si es o no primo! ", (input) => {
+        input = parseInt(input)
+        let isPrime = true
+
+        for (let i = 2; i < input; i++) {
+            if (input % i === 0) {
+                isPrime = false
+                break
+            }
+        }
+        if(isPrime) {
+            console.log(`El número ${input} es un número primo.`)
+        }
+        else {
+            console.log(`El número ${input} no es un número primo.`)
+        }
+        rl.close()
+    })
+}
+primeNumber()
 
 /*3. Realizar un programa que pregunte primero un número del 1 al 1000 a un usuario, y luego permita a otro usuario en seis oportunidades adivinar ese número.
     El programa debe indicar por pantalla si el número ingresado es mayor o menor al que debe adivinar, y además informar si la diferencia es grande, pequeña o muy pequeña,
     dependiendo si esta es mayor a 200 y mayor a 20 respectivamente.*/
+function guessTheNumber(secretNumber) {
+    let attempts = 6
+    const prompt = require('prompt-sync')()
+
+    while (attempts > 0) {
+        const userInput = prompt(`Tienes ${attempts} intentos. Adivina el número!`)
+        const userGuess = parseInt(userInput)
+
+        if(isNaN(userGuess)) {
+            console.log("Por favor ingresa un número válido.")
+            continue
+        }
+        if(userGuess === secretNumber) {
+            console.log(`Felicidades, adivinaste el número: ${secretNumber}`)
+            break
+        }
+        else {
+            const difference = Math.abs(userGuess - secretNumber)
+
+            if(difference > 200) {
+                console.log("La diferencia es grande.")
+            }
+            else if(difference > 20) {
+                console.log("La diferencia es pequeña.")
+            }
+            else {
+                console.log("La diferencia es muy pequeña.")
+            }
+
+            if(userGuess > secretNumber) {
+                console.log("El número es menor.")
+            }
+            else {
+                console.log("El número es mayor.")
+            }
+            attempts--
+        }
+    }
+    if(attempts === 0) {
+        console.log(`Se acabaron los intentos. El número correcto era: ${secretNumber}`)
+    }
+}
+guessTheNumber(555)
 
 /*4. Realizar un algoritmo que intercambie los valores de dos variables numéricas utilizando solo esas dos variables (si almaceno el primer valor que ingresa el usuario en la
    variable num1 y el segundo en la variable num2, al final del programa el valor que estaba en num1 debe quedar en num2 y viceversa).
