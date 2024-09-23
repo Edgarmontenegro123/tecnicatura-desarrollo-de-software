@@ -1,41 +1,15 @@
 // TP3 - Técnicas
+const prompt = require('prompt-sync')()
 
-const readLine = require('readline')
-const rl = readLine.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})
-
-/*1. realizar un algoritmo que muestre por pantalla todos los números pares que hay entre 1 y 50. No utilizar la función nativa de javascript %,
+/* 1. realizar un algoritmo que muestre por pantalla todos los números pares que hay entre 1 y 50. No utilizar la función nativa de javascript %,
      emplear funciones definidas en el programa en su lugar.
-1.2 agregar después de listar los números divisibles por dos, los divisibles por tres y luego por cinco.*/
+   1.2 agregar después de listar los números divisibles por dos, los divisibles por tres y luego por cinco.*/
 function calculateResto(num, div) {
     while(num >= div) {
         num -= div;
     }
     return num === 0;
 }
-/*function evenOrOdd(num) {
-    while(num >= 2) {
-        num -= 2;
-    }
-    return num === 0;
-}
-
-function divisibleByThree(num) {
-    while(num >= 3) {
-        num -= 3;
-    }
-    return num === 0;
-}
-
-function divisibleByFive(num) {
-    while(num >= 5) {
-        num -= 5;
-    }
-    return num === 0;
-}*/
-
 function evenNumFromOneToFifty() {
     let arr = [];
     let arr2 = [];
@@ -60,27 +34,25 @@ function evenNumFromOneToFifty() {
 }
 console.log(evenNumFromOneToFifty());
 
-/*2. Realizar un algoritmo que permita al usuario ingresar un número por teclado y muestre por pantalla si el número es primo (un número es primo cuando únicamente es divisible por sí mismo y por uno).
-2.1 Mostrar por pantalla los primeros veinte números primos.*/
+/* 2. Realizar un algoritmo que permita al usuario ingresar un número por teclado y muestre por pantalla si el número es primo (un número es primo cuando únicamente es divisible por sí mismo y por uno).
+   2.1 Mostrar por pantalla los primeros veinte números primos.*/
 function primeNumber() {
-    rl.question("Ingresa un número para saber si es o no primo! ", (input) => {
-        input = parseInt(input)
-        let isPrime = true
 
-        for (let i = 2; i < input; i++) {
-            if (input % i === 0) {
-                isPrime = false
-                break
-            }
+    const input = parseInt(prompt("Ingresa un número para saber si es o no primo! "))
+    let isPrime = true
+
+    for (let i = 2; i < input; i++) {
+        if (input % i === 0) {
+            isPrime = false
+            break
         }
-        if(isPrime) {
-            console.log(`El número ${input} es un número primo.`)
-        }
-        else {
-            console.log(`El número ${input} no es un número primo.`)
-        }
-        rl.close()
-    })
+    }
+    if(isPrime) {
+        console.log(`El número ${input} es un número primo.`)
+    }
+    else {
+        console.log(`El número ${input} no es un número primo.`)
+    }
 }
 primeNumber()
 
@@ -89,10 +61,9 @@ primeNumber()
     dependiendo si esta es mayor a 200 y mayor a 20 respectivamente.*/
 function guessTheNumber(secretNumber) {
     let attempts = 6
-    const prompt = require('prompt-sync')()
 
     while (attempts > 0) {
-        const userInput = prompt(`Tienes ${attempts} intentos. Adivina el número!`)
+        const userInput = prompt(`Adivina el número! Tienes ${attempts} intentos. `)
         const userGuess = parseInt(userInput)
 
         if(isNaN(userGuess)) {
@@ -100,8 +71,8 @@ function guessTheNumber(secretNumber) {
             continue
         }
         if(userGuess === secretNumber) {
-            console.log(`Felicidades, adivinaste el número: ${secretNumber}`)
-            break
+            console.log(`Felicidades, adivinaste, el número secreto es: ${secretNumber}`)
+            process.exit()
         }
         else {
             const difference = Math.abs(userGuess - secretNumber)
@@ -117,10 +88,10 @@ function guessTheNumber(secretNumber) {
             }
 
             if(userGuess > secretNumber) {
-                console.log("El número es menor.")
+                console.log("El número es menor, prueba de nuevo!")
             }
             else {
-                console.log("El número es mayor.")
+                console.log("El número es mayor, prueba de nuevo!")
             }
             attempts--
         }
@@ -128,6 +99,7 @@ function guessTheNumber(secretNumber) {
     if(attempts === 0) {
         console.log(`Se acabaron los intentos. El número correcto era: ${secretNumber}`)
     }
+    process.exit()
 }
 guessTheNumber(555)
 
