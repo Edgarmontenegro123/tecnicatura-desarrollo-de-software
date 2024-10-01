@@ -6,10 +6,10 @@
 */
 /* 
     let vel, time;
-    Ingresar (vel, "Ingrese velocidad: ")
-    Ingresar (time, "Ingrese tiempo: ")
+    Ingresar (vel, "Ingrese velocidad:")
+    Ingresar (time, "Ingrese tiempo:")
     let distance = vel * time;
-    Mostrar (distance, "La distancia recorrida es: ")
+    Mostrar (distance, "La distancia recorrida es:")
 */
 function distance(vel, time){
     let distance = vel * time
@@ -74,14 +74,14 @@ console.log(averageForStudents(students))
 */
  /* 
     let correct, incorrect, nil, final;
-    Ingresar(correct, "Cantidad de respuestas correctas: ")
-    Ingresar(incorrect, "Cantidad de respuestas incorrectas: ")
-    Ingresar(nil, "Cantidad de respuestas en blanco: ")
+    Ingresar(correct, "Cantidad de respuestas correctas:")
+    Ingresar(incorrect, "Cantidad de respuestas incorrectas:")
+    Ingresar(nil, "Cantidad de respuestas en blanco:")
     correct = correct * 4;
     incorrect = incorrect * -1;
     nil = nil * 0;
     final = correct + incorrect + nil;
-    Mostrar(final, "El puntaje final es: ")
+    Mostrar(final, "El puntaje final es:")
  */
 
 function finalScore(correct, incorrect, nil) {
@@ -103,7 +103,7 @@ console.log(gamesPoints(5, 3, 4))
 
 /* 
     5) realizar un programa que permita convertir una determinada cantidad de horas y minutos ingresados por el usuario a segundos.
-    5.B). idem, pero el usuario ingresa cantidad de segundos y se muestra por pantalla las horas y minutos equivalentes 
+    5.B). Idem, pero el usuario ingresa cantidad de segundos y se muestra por pantalla las horas y minutos equivalentes
     (redondeando minutos hacia arriba).
 */
 function convertToSeconds(hours, minutes) {
@@ -122,7 +122,7 @@ function convertSecondsToHours(sec) {
 console.log(convertSecondsToHours(3700))
 
 /* 
-    6) ingresar el radio del circulo de la base de un cilindro y su altura, 
+    6) ingresar el radio del círculo de la base de un cilindro y su altura,
     para mostrar por pantalla el volumen de dicho cilindro (pi x radio x radio x altura).
 */
 function volume(radio, height) {
@@ -151,9 +151,9 @@ function evenOrOdd(num) {
 console.log(evenOrOdd(8))
 
 /* 
-    8) ingresar por teclado los tres lados de un triangulo y mostrar por pantalla primero si es posible formar un triángulo con esos datos, 
-    y, en caso positivo, qué tipo de triángulo es (todos los lados iguales, equilatero, dos iguales isoceles y todos diferentes escaleno).
-    Un triángulo es válido sólo si la suma de dos de sus lados es mayor al lado restante.
+    8) ingresar por teclado los tres lados de un triángulo y mostrar por pantalla primero si es posible formar un triángulo con esos datos,
+    y, en caso positivo, qué tipo de triángulo es (todos los lados iguales, equilátero, dos iguales isósceles y todos diferentes escalenos).
+    Un triángulo es válido solo si la suma de dos de sus lados es mayor al lado restante.
 */
 function triangle(l1, l2, l3) {
     const isValidTriangle = (l1 + l2) > l3 && (l1 + l3) > l2 && (l2 + l3) > l1
@@ -176,7 +176,7 @@ console.log(triangle(3, 3, 5))
 /* 
     9) realizar un programa que permita calcular el total a pagar en un estacionamiento ingresando el horario de entrada y de salida 
     (las horas sin importar los minutos). 
-    Valor por menos de mediodía: $2000 la hora, por menos de 24hs: $1500 la hora. Y el valor de la hora por 24hs o más es $1300. 
+    Valor por menos de mediodía: $2000 la hora, por menos de 24 hs: $1500 la hora. Y el valor de la hora por 24 hs o más es $1300.
     Si tiene pago por mes, no hay que cobrar nada. 
 */
 function parkingCost(entryDay, entryHour, exitHour, hasMonthlyPayment) {
