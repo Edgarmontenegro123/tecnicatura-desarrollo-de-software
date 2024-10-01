@@ -48,6 +48,7 @@ function fibonacciPosition() {
     if(position < 1) {
         return position
     }
+
     let fib_prev = 0
     let fib_next = 1
 
