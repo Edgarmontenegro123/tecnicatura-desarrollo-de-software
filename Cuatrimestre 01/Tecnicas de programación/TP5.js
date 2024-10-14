@@ -70,6 +70,19 @@ console.log(longSerie())
 /*
     3). Realizar un algoritmo que permita a un usuario jugar al tatetí.
 */
+function tateti() {
+    let cell1 = '1', cell2 = '2', cell3 = '3',
+        cell4 = '4', cell5 = '5', cell6 = '6',
+        cell7 = '7', cell8 = '8', cell9 = '9'
+    console.log(cell1 + ' | ' + cell2 + ' | ' + cell3)
+    console.log('--+---+---')
+    console.log(cell4 + ' | ' + cell5 + ' | ' + cell6)
+    console.log('--+---+---')
+    console.log(cell7 + ' | ' + cell8 + ' | ' + cell9)
+}
+
+tateti()
+// console.log(tateti())
 
 
 
