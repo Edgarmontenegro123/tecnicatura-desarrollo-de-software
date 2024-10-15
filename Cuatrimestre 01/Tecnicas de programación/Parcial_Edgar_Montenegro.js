@@ -2,6 +2,7 @@
 // Primer parcial
 
 const prompt = require('prompt-sync')()
+
 /*
     1). Realizar un algoritmo que solicite a un usuario ingresar números binarios por teclado e indique su equivalente decimal
     (ie en base diez).
