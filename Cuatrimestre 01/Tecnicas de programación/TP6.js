@@ -111,11 +111,7 @@ console.log(repeatedNumbers())
 /*6). Dado un array compuesto por la cantidad de números aleatorios que determine el usuario, realizar un programa que ordene el array de menor a mayor.
       6.1 Agregar un menu para que el usuario pueda determinar de qué manera ordenar el array.
 */
-const sortMinToMax = () => {
-    let randomValue = 999
-    let randomArray = createRandomArray(randomValue)
-
-    console.log(`Random array original: ${randomArray}`)
+const sortMinToMax = (randomArray) => {
     for(let i = 0; i < randomArray.length - 1; i++) {
         let minIndex = i
         for(let j = i + 1; j < randomArray.length; j++) {
@@ -129,29 +125,43 @@ const sortMinToMax = () => {
             randomArray[minIndex] = temp
         }
     }
-    return `Random array: ${randomArray}`
+    return randomArray
 }
-console.log(sortMinToMax())
+// console.log(sortMinToMax())
 
-const sortMaxToMin = () => {
-    let randomValue = 999
-    let randomArray = createRandomArray(randomValue)
-    console.log(`Random array original: ${randomArray}`)
-
+const sortMaxToMin = (randomArray) => {
     for(let i = 0; i < randomArray.length; i++) {
-        let minIndex = i
+        let maxIndex = i
 
         for(let j = i + 1; j < randomArray.length; j++) {
-            if(randomArray[j] > randomArray[minIndex]) {
-                minIndex = j
+            if(randomArray[j] > randomArray[maxIndex]) {
+                maxIndex = j
             }
         }
-        if(minIndex !== i) {
+        if(maxIndex !== i) {
             let temp = randomArray[i]
-            randomArray[i] = randomArray[minIndex]
-            randomArray[minIndex] = temp
+            randomArray[i] = randomArray[maxIndex]
+            randomArray[maxIndex] = temp
         }
     }
-    return `Random array: ${randomArray}`
+    return randomArray
 }
-console.log(sortMaxToMin())
+// console.log(sortMaxToMin())
+
+const menu = () => {
+    return prompt(`Ingrese 1 para ordenar de menor a mayor ó 2 para ordenar de mayor a menor: `)
+}
+const orderArray = () => {
+    let randomValue = 999
+    let randomArray = createRandomArray(randomValue)
+    let userChoice = menu()
+    console.log(`Random array original: ${randomArray}`)
+    if(userChoice === '1') {
+        sortMinToMax(randomArray)
+    }
+    if(userChoice === '2') {
+        sortMaxToMin(randomArray)
+    }
+    return randomArray
+}
+console.log(orderArray())
