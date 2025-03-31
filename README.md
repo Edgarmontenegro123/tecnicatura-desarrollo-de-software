@@ -1,1 +1,0 @@
-# tecnicatura-desarrollo-de-software
