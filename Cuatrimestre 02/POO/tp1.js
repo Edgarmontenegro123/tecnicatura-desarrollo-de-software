@@ -44,9 +44,11 @@ class Reloj {
         // const ss = this.segundos < 10 ? '0' + this.segundos : this.segundos;
         const ss = this.segundos < 10 ? `0${this.segundos}` : this.segundos;
 
-        /*const hh = String(this.horas).padStart(2, '0');
+        /*
+        const hh = String(this.horas).padStart(2, '0');
         const mm = String(this.minutos).padStart(2, '0');
-        const ss = String(this.segundos).padStart(2, '0');*/
+        const ss = String(this.segundos).padStart(2, '0');
+        */
 
         return `${hh}:${mm}:${ss}`;
     }
