@@ -2,7 +2,6 @@
 ======================================
  Ejercicios Prácticos de POO
 ======================================
-*/
 /*
 1️⃣ Ejercicio: Crear un Reloj Digital
 --------------------------------------
@@ -38,9 +37,12 @@ class Reloj {
     }
 
     mostrarTiempo() {
-        const hh = this.horas < 10 ? '0' + this.horas : this.horas;
-        const mm = this.minutos < 10 ? '0' + this.minutos : this.minutos;
-        const ss = this.segundos < 10 ? '0' + this.segundos : this.segundos;
+        // const hh = this.horas < 10 ? '0' + this.horas : this.horas;
+        const hh = this.horas < 10 ? `0${this.horas}` : this.horas;
+        // const mm = this.minutos < 10 ? '0' + this.minutos : this.minutos;
+        const mm = this.minutos < 10 ? `0${ this.minutos}` : this.minutos;
+        // const ss = this.segundos < 10 ? '0' + this.segundos : this.segundos;
+        const ss = this.segundos < 10 ? `0${this.segundos}` : this.segundos;
 
         /*const hh = String(this.horas).padStart(2, '0');
         const mm = String(this.minutos).padStart(2, '0');
@@ -67,8 +69,6 @@ console.log(newReloj.mostrarTiempo());
 newReloj.avanzar();
 console.log(newReloj.mostrarTiempo());*/
 newReloj.iniciar();
-
-
 
 /*
 2️⃣ Ejercicio: Sistema de Películas
