@@ -37,11 +37,8 @@ class Reloj {
     }
 
     mostrarTiempo() {
-        // const hh = this.horas < 10 ? '0' + this.horas : this.horas;
         const hh = this.horas < 10 ? `0${this.horas}` : this.horas;
-        // const mm = this.minutos < 10 ? '0' + this.minutos : this.minutos;
         const mm = this.minutos < 10 ? `0${ this.minutos}` : this.minutos;
-        // const ss = this.segundos < 10 ? '0' + this.segundos : this.segundos;
         const ss = this.segundos < 10 ? `0${this.segundos}` : this.segundos;
 
         /*
