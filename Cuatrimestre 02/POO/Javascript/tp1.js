@@ -67,7 +67,7 @@ newReloj.avanzar();
 console.log(newReloj.mostrarTiempo());
 newReloj.avanzar();
 console.log(newReloj.mostrarTiempo());*/
-newReloj.iniciar();
+// newReloj.iniciar();
 
 /*
 2️⃣ Ejercicio: Sistema de Películas
@@ -78,6 +78,58 @@ newReloj.iniciar();
    - Una propiedad privada `_calificación` y un método `setCalificacion(valor)`.
    - Un método `getInfo()` que muestra los detalles de la película.
 */
+
+class Pelicula {
+    #calificacion = null;
+
+    constructor(titulo, director, calificacion){
+        this.titulo = titulo;
+        this.director = director;
+        this.#calificacion = null;
+
+        if(calificacion !== undefined){
+            try {
+                this.setCalificacion(calificacion);
+            } catch(error){
+                console.warn(`Valor inicial inválido: ${error.message}`);
+            }
+        }
+    }
+
+    setCalificacion(valor){
+        if(valor > 0 && valor <= 10){
+            this.#calificacion = valor;
+        }
+        else {
+            throw new Error(`El valor ${valor} no es un valor válido para calificar`);
+        }
+    }
+
+    getInfo(){
+        let response
+        if(this.#calificacion === null){
+            response = `La película ${this.titulo}, del director ${this.director}, aun no tiene una calificación válida.`;
+        }
+        else {
+            response = `La película ${this.titulo}, del director ${this.director}, tiene una calificación de ${this.#calificacion}/10 puntos.`;
+        }
+        return response;
+    }
+}
+
+const pelicula1 = new Pelicula('Batman Begins', 'Christopher Nolan');
+pelicula1.setCalificacion(7);
+console.log(pelicula1.getInfo());
+
+let pelicula2 = new Pelicula('Batman Dark Knight', 'Christopher Nolan', 11);
+console.log(pelicula2.getInfo());
+
+pelicula2 = new Pelicula('Batman Dark Knight', 'Christopher Nolan', 10);
+console.log(pelicula2.getInfo());
+
+const pelicula3 = new Pelicula('Batman Dark Knight Rises', 'Christopher Nolan', 8);
+console.log(pelicula3.getInfo());
+
 
 /*
 3️⃣ Ejercicio: Sistema de Comercio Electrónico
