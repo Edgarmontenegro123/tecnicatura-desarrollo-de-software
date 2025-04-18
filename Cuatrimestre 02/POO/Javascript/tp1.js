@@ -200,6 +200,47 @@ console.log(producto3.mostrarInfo());
    - Cada subclase sobrescribe el método `hacerSonido()`.
 */
 
+class Animal {
+    constructor(nombre, zona) {
+        this.nombre = nombre;
+        this.zona = zona;
+    }
+
+    hacerSonido() {
+        return `${this.nombre} hace un sonido genérico!`;
+    }
+
+    mostrarInfo(){
+        return `${this.hacerSonido()}.`;
+    }
+}
+
+class Leon extends Animal {
+    hacerSonido() {
+        return `El león ${this.nombre} que viene de ${this.zona} ruge!`;
+    }
+}
+
+class Elefante extends Animal {
+    hacerSonido() {
+        return `La elefante ${this.nombre} que viene de ${this.zona} barrita!`;
+    }
+}
+
+class Mono extends Animal {
+    hacerSonido() {
+        return `El mono ${this.nombre} que viene de ${this.zona} parlotea!`;
+    }
+}
+
+const animal1 = new Leon('Alex', 'Madagascar');
+const animal2 = new Elefante('Dora', 'China');
+const animal3 = new Mono('Julien', 'Colombia');
+
+console.log(animal1.mostrarInfo());
+console.log(animal2.mostrarInfo());
+console.log(animal3.mostrarInfo());
+
 /*
 5️⃣ Ejercicio: Sistema de Calificación de Estudiantes
 --------------------------------------
