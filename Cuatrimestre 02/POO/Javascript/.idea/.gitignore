@@ -9,3 +9,5 @@
 # JetBrains IDE config files
 *.iml
 .idea/
+/modules.xml
+/vcs.xml
