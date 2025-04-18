@@ -140,6 +140,57 @@ console.log(pelicula3.getInfo());
    - Cada subclase tiene un atributo único (`garantía`, `talla` o `fechaCaducidad`).
 */
 
+class Producto {
+    constructor(nombre, precio, marca) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.marca = marca;
+    }
+
+    mostrarInfo(){
+        return `Nombre: ${this.nombre}, Precio: ${this.precio}, Marca: ${this.marca}`;
+    }
+}
+
+// Subclases
+class Electronica extends Producto {
+    constructor(nombre, precio, marca, garantia) {
+        super(nombre, precio, marca);
+        this.garantia = garantia;
+    }
+    mostrarInfo() {
+        return `${super.mostrarInfo()} - Garantía: ${this.garantia} años.`;
+    }
+}
+
+class Ropa extends Producto {
+    constructor(nombre, precio, marca, talla) {
+        super(nombre, precio, marca);
+        this.talla = talla;
+    }
+    mostrarInfo() {
+        return `${super.mostrarInfo()} - Talla: ${this.talla}.`;
+    }
+}
+
+class Alimento extends Producto {
+    constructor(nombre, precio, marca, vencimiento) {
+        super(nombre, precio, marca);
+        this.vencimiento = vencimiento;
+    }
+    mostrarInfo() {
+        return `${super.mostrarInfo()} - Vencimiento: ${this.vencimiento}.`;
+    }
+}
+
+const producto1 = new Electronica('Televisor', 500, 'LG', 2);
+const producto2 = new Ropa('Sweater', 80, 'Jordan', 'S');
+const producto3 = new Alimento('Arroz', 3, 'Molinos Ala', '07/10/2025');
+
+console.log(producto1.mostrarInfo());
+console.log(producto2.mostrarInfo());
+console.log(producto3.mostrarInfo());
+
 /*
 4️⃣ Ejercicio: Sistema de Gestión de Zoológico
 --------------------------------------
