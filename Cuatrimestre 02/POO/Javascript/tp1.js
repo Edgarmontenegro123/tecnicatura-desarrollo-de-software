@@ -305,6 +305,9 @@ estudiante2.agregarCalificacion(9);
 
 class Libro {
     constructor(titulo, autor, anio) {
+        if(!titulo || !autor || !anio){
+            throw new Error('Todos los campos son obligatorios.')
+        }
         this.titulo = titulo;
         this.autor = autor;
         this.anio = anio;
@@ -318,13 +321,19 @@ class Biblioteca {
     }
 
     agregarLibro(libro) {
-        if(libro) {
+        if(libro instanceof Libro) {
             this.#libros.push(libro);
         }
-        return this.#libros
+        else {
+            throw new Error('Solo se pueden agregar libros con los datos completos!')
+        }
     }
 
     listarLibros() {
+        if(this.#libros.length === 0) {
+            return `La biblioteca está vacía.`;
+        }
+
         const lista = this.#libros.map(libro => {
             return `Título: ${libro.titulo}, Autor: ${libro.autor}, Año: ${libro.anio}`;
         })
@@ -340,13 +349,6 @@ console.log(biblioteca.listarLibros());
 const libro2 = new Libro('Harry Potter y la cámara secreta', 'J. K. Rowling', '1998');
 biblioteca.agregarLibro(libro2);
 console.log(biblioteca.listarLibros());
-
-// ¡Para terminar el ejercicio faltan las validaciones!
-
-
-
-
-
 
 
 /*
