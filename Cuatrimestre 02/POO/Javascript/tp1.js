@@ -287,13 +287,11 @@ class Estudiante {
 
 const estudiante1 = new Estudiante('Viviana', [7, 9, 10]);
 estudiante1.agregarCalificacion(9);
-console.log(estudiante1.mostrarInfo());
+// console.log(estudiante1.mostrarInfo());
 
 const estudiante2 = new Estudiante('Miranda', [2, 9, 10, 1, 4, 5]);
 estudiante2.agregarCalificacion(9);
-console.log(estudiante2.mostrarInfo());
-
-
+// console.log(estudiante2.mostrarInfo());
 
 /*
 6️⃣ Ejercicio: Sistema de Biblioteca
@@ -304,6 +302,52 @@ console.log(estudiante2.mostrarInfo());
    - Una clase `Biblioteca` que almacena libros en un array.
    - Métodos para `agregarLibro()` y `listarLibros()`.
 */
+
+class Libro {
+    constructor(titulo, autor, anio) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anio = anio;
+    }
+}
+
+class Biblioteca {
+    #libros;
+    constructor(libros = []) {
+        this.#libros = libros;
+    }
+
+    agregarLibro(libro) {
+        if(libro) {
+            this.#libros.push(libro);
+        }
+        return this.#libros
+    }
+
+    listarLibros() {
+        const lista = this.#libros.map(libro => {
+            return `Título: ${libro.titulo}, Autor: ${libro.autor}, Año: ${libro.anio}`;
+        })
+        return `Libros:\n${lista.join('\n')}`;
+    }
+}
+
+const libro1 = new Libro('Harry Potter y la piedra filosofal', 'J. K. Rowling', '1995');
+const biblioteca = new Biblioteca();
+biblioteca.agregarLibro(libro1);
+console.log(biblioteca.listarLibros());
+
+const libro2 = new Libro('Harry Potter y la cámara secreta', 'J. K. Rowling', '1998');
+biblioteca.agregarLibro(libro2);
+console.log(biblioteca.listarLibros());
+
+// ¡Para terminar el ejercicio faltan las validaciones!
+
+
+
+
+
+
 
 /*
 7️⃣ Ejercicio: Sistema Bancario
