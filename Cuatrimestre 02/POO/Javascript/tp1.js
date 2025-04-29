@@ -119,16 +119,16 @@ class Pelicula {
 
 const pelicula1 = new Pelicula('Batman Begins', 'Christopher Nolan');
 pelicula1.setCalificacion(7);
-console.log(pelicula1.getInfo());
+// console.log(pelicula1.getInfo());
 
-let pelicula2 = new Pelicula('Batman Dark Knight', 'Christopher Nolan', 11);
-console.log(pelicula2.getInfo());
+// let pelicula2 = new Pelicula('Batman Dark Knight', 'Christopher Nolan', 11);
+// console.log(pelicula2.getInfo());
 
 pelicula2 = new Pelicula('Batman Dark Knight', 'Christopher Nolan', 10);
-console.log(pelicula2.getInfo());
+// console.log(pelicula2.getInfo());
 
 const pelicula3 = new Pelicula('Batman Dark Knight Rises', 'Christopher Nolan', 8);
-console.log(pelicula3.getInfo());
+// console.log(pelicula3.getInfo());
 
 
 /*
@@ -187,9 +187,9 @@ const producto1 = new Electronica('Televisor', 500, 'LG', 2);
 const producto2 = new Ropa('Sweater', 80, 'Jordan', 'S');
 const producto3 = new Alimento('Arroz', 3, 'Molinos Ala', '07/10/2025');
 
-console.log(producto1.mostrarInfo());
-console.log(producto2.mostrarInfo());
-console.log(producto3.mostrarInfo());
+// console.log(producto1.mostrarInfo());
+// console.log(producto2.mostrarInfo());
+// console.log(producto3.mostrarInfo());
 
 /*
 4️⃣ Ejercicio: Sistema de Gestión de Zoológico
@@ -237,9 +237,9 @@ const animal1 = new Leon('Alex', 'Madagascar');
 const animal2 = new Elefante('Dora', 'China');
 const animal3 = new Mono('Julien', 'Colombia');
 
-console.log(animal1.mostrarInfo());
-console.log(animal2.mostrarInfo());
-console.log(animal3.mostrarInfo());
+// console.log(animal1.mostrarInfo());
+// console.log(animal2.mostrarInfo());
+// console.log(animal3.mostrarInfo());
 
 /*
 5️⃣ Ejercicio: Sistema de Calificación de Estudiantes
@@ -251,6 +251,49 @@ console.log(animal3.mostrarInfo());
    - `obtenerPromedio()`: Calcula el promedio.
    - `mostrarInfo()`: Muestra los detalles del estudiante y el promedio de notas.
 */
+
+class Estudiante {
+    #calificaciones;
+    constructor(nombre, calificaciones = []) {
+        this.nombre = nombre;
+        if(!Array.isArray(calificaciones)){
+            throw new Error(`Las calificaciones deberían ser un array`);
+        }
+        this.#calificaciones = calificaciones;
+    }
+
+    agregarCalificacion(nota) {
+        if(/*typeof nota === 'number' && */nota > 0 && nota <= 10){
+            this.#calificaciones.push(nota);
+        }
+        else {
+            throw new Error(`El valor ${nota} no es un valor válido para calificar`);
+        }
+    }
+
+    obtenerPromedio() {
+        if(this.#calificaciones.length === 0) return 0;
+        let suma = 0;
+        for(let nota of this.#calificaciones) {
+            suma += nota;
+        }
+        return (suma / this.#calificaciones.length).toFixed(2);
+    }
+
+    mostrarInfo() {
+        return `Nombre: ${this.nombre}, Calificaciones: ${this.#calificaciones.join(', ')}, Promedio: ${this.obtenerPromedio()}`;
+    }
+}
+
+const estudiante1 = new Estudiante('Viviana', [7, 9, 10]);
+estudiante1.agregarCalificacion(9);
+console.log(estudiante1.mostrarInfo());
+
+const estudiante2 = new Estudiante('Miranda', [2, 9, 10, 1, 4, 5]);
+estudiante2.agregarCalificacion(9);
+console.log(estudiante2.mostrarInfo());
+
+
 
 /*
 6️⃣ Ejercicio: Sistema de Biblioteca
