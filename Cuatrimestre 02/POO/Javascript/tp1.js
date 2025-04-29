@@ -350,6 +350,11 @@ const libro2 = new Libro('Harry Potter y la cámara secreta', 'J. K. Rowling', '
 biblioteca.agregarLibro(libro2);
 console.log(biblioteca.listarLibros());
 
+// Ejemplo de error
+/*const libro3 = new Libro('', 'qwerty', 1985);
+biblioteca.agregarLibro(libro3);
+console.log(biblioteca.listarLibros());*/
+
 
 /*
 7️⃣ Ejercicio: Sistema Bancario
