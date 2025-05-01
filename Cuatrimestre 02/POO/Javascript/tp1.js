@@ -365,6 +365,52 @@ console.log(biblioteca.listarLibros());*/
    - Métodos para `depositar()`, `retirar()` y `obtenerSaldo()`.
 */
 
+class CuentaBancaria {
+    constructor(numeroDeCuenta, nombreTitular, saldo) {
+        if(typeof numeroDeCuenta !== 'string' || numeroDeCuenta.length !== 16){
+            throw new Error('El número de cuenta debe tener exactamente 16 dígitos numéricos');
+        }
+
+        if(nombreTitular === '') {
+            throw new Error('Se debe ingresar el nombre del titular de la cuenta')
+        }
+
+        this.numeroDeCuenta = numeroDeCuenta;
+        this.nombreTitular = nombreTitular;
+        this.saldo = saldo;
+    }
+
+    depositar(monto){
+        if(monto < 0){
+            throw new Error('El monto ingresado no puede ser negativo');
+        }
+        this.saldo += monto;
+    }
+
+    retirar(monto) {
+        if(monto < 0){
+            throw new Error('El monto ingresado no es correcto');
+        }
+        if(monto > this.saldo) {
+            throw new Error('Saldo insuficiente');
+        }
+        this.saldo -= monto;
+    }
+
+    obtenerSaldo() {
+        return `Número de cuenta: ${this.numeroDeCuenta}, perteneciente a: ${this.nombreTitular}, tiene como saldo: ${this.saldo}`;
+    }
+}
+
+const cuentaVivi = new CuentaBancaria('1234321234567890', 'Viviana Valera', 12000);
+console.log(cuentaVivi.obtenerSaldo());
+cuentaVivi.depositar(3000);
+console.log(cuentaVivi.obtenerSaldo());
+cuentaVivi.retirar(10500);
+console.log(cuentaVivi.obtenerSaldo());
+cuentaVivi.retirar(6000);
+console.log(cuentaVivi.obtenerSaldo());
+
 /*
 8️⃣ Ejercicio: Gestión de Vehículos
 --------------------------------------
