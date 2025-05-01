@@ -404,12 +404,12 @@ class CuentaBancaria {
 
 const cuentaVivi = new CuentaBancaria('1234321234567890', 'Viviana Valera', 12000);
 console.log(cuentaVivi.obtenerSaldo());
-cuentaVivi.depositar(3000);
+/*cuentaVivi.depositar(3000);
 console.log(cuentaVivi.obtenerSaldo());
 cuentaVivi.retirar(10500);
 console.log(cuentaVivi.obtenerSaldo());
 cuentaVivi.retirar(6000);
-console.log(cuentaVivi.obtenerSaldo());
+console.log(cuentaVivi.obtenerSaldo());*/
 
 /*
 8️⃣ Ejercicio: Gestión de Vehículos
@@ -419,6 +419,84 @@ console.log(cuentaVivi.obtenerSaldo());
    - Subclases: `Automóvil`, `Motocicleta`, `Camión`, `Bicicleta`.
    - Cada subclase tiene un atributo único (`numRuedas`, `capacidadMotor`, etc.).
 */
+
+class Vehiculo {
+    constructor(marca, modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+
+    mostrarInfo() {
+        return `Marca: ${this.marca}, Modelo: ${this.modelo}`;
+    }
+}
+
+class Automovil extends Vehiculo {
+    constructor(marca, modelo, numRuedas) {
+        super(marca, modelo);
+
+        if(numRuedas <= 2){
+            throw new Error('Debes ingresar un número válido para la cantidad de ruedas de un vehículo (mínimo 3)')
+        }
+        this.numRuedas = numRuedas;
+    }
+
+    mostrarInfo() {
+        return `${super.mostrarInfo()}, Número de ruedas: ${this.numRuedas}`;
+    }
+}
+
+class Motocicleta extends Vehiculo {
+    constructor(marca, modelo, cilindrada) {
+        super(marca, modelo);
+
+        if(cilindrada <= 0){
+            throw new Error('Debes ingresar un valor válido para la cilindrada')
+        }
+        this.cilindrada = cilindrada;
+    }
+
+    mostrarInfo() {
+        return `${super.mostrarInfo()}, Cilindrada: ${this.cilindrada}`;
+    }
+}
+
+class Camion extends Vehiculo {
+    constructor(marca, modelo, cantidadDeAcoplados) {
+        super(marca, modelo);
+
+        if(cantidadDeAcoplados < 0) {
+            throw new Error('La cantidad de acoplados no puede ser menor a cero')
+        }
+        this.cantidadDeAcoplados = cantidadDeAcoplados;
+    }
+
+    mostrarInfo() {
+        return `${super.mostrarInfo()}, Cantidad de acoplados: ${this.cantidadDeAcoplados}`;
+    }
+}
+
+class Bicicleta extends Vehiculo {
+    constructor(marca, modelo, esElectrica) {
+        super(marca, modelo);
+        this.esElectrica = esElectrica;
+    }
+
+    mostrarInfo() {
+        const electricaTexto = this.esElectrica? 'Si' : 'No';
+        return `${super.mostrarInfo()}, Es eléctrica: ${electricaTexto}`;
+    }
+}
+
+const auto1 = new Automovil('Audi', 'A4', 3);
+const moto1 = new Motocicleta('Harley Davidson', 'Touring', 114);
+const camion1 = new Camion('Mercedes Benz', 'Actros', 1);
+const bicicleta1 = new Bicicleta('Orbea', 'Vibe', true);
+
+console.log(auto1.mostrarInfo());
+/*console.log(moto1.mostrarInfo());
+console.log(camion1.mostrarInfo());
+console.log(bicicleta1.mostrarInfo());*/
 
 /*
 9️⃣ Ejercicio: Sistema de Chatbot
