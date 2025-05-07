@@ -559,11 +559,11 @@ const bots = {
     programacion: new BotDeProgramacion('Bot de programacion')
 }
 
-console.log('Bienvenido al sistema de chatbots!');
-console.log('Las opciones que puedes utilizar son: soporte, clima, programacion');
+/*console.log('Bienvenido al sistema de chatbots!');
+console.log('Las opciones que puedes utilizar son: soporte, clima, programacion');*/
 
 // const tipoBot = prompt('Con que Bot deseas interactuar? \n', '', '').toLowerCase();
-const tipoBot = readlineSync.question('Con que Bot deseas interactuar?\n> ').toLowerCase();
+/*const tipoBot = readlineSync.question('Con que Bot deseas interactuar?\n> ').toLowerCase();
 
 const botSeleccionado = bots[tipoBot];
 
@@ -576,7 +576,7 @@ else {
     const mensajeUsuario = readlineSync.question('Por favor cuentanos mas detalles acerca de tu consulta:\n> ');
     const mensaje = botSeleccionado.responder(mensajeUsuario);
     console.log(`Respuesta del Bot: \n${mensaje}`);
-}
+}*/
 
 /*
 🔟 Ejercicio: Sistema de Cuestionario en Línea
@@ -587,6 +587,67 @@ else {
    - Un método para `iniciarCuestionario()` y evaluar las respuestas del usuario.
    - Un método para mostrar la puntuación final.
 */
+
+class Cuestionario {
+    constructor(preguntas) {
+        this.preguntas = preguntas;
+        this.puntuacion = 0;
+    }
+
+    iniciarCuestionario() {
+        this.preguntas.forEach((pregunta, index) => {
+            console.log(`\n ${index + 1}. ${pregunta.pregunta}`);
+            const opciones = pregunta.obtenerRespuestasAleatorias();
+
+            opciones.forEach((opcion, i) => {
+                console.log(`\n ${i + 1}. ${opcion}`);
+            })
+
+            const respuestaIndex = readlineSync.question("Elige una opción (1 - 4): ");
+            const respuestaElegida = opciones[respuestaIndex - 1];
+
+            if(respuestaElegida === pregunta.respuestaCorrecta) {
+                console.log("✅ ¡Correcto!");
+                this.puntuacion++;
+            } else {
+                console.log(`❌ Incorrecto. La correcta era: ${pregunta.respuestaCorrecta}`);
+            }
+        });
+        this.mostrarPuntuacionFinal();
+    }
+
+    mostrarPuntuacionFinal() {
+        console.log(`\n Tu puntuación final es: ${this.puntuacion} / ${this.preguntas.length}`)
+    }
+}
+
+class Pregunta {
+    constructor(pregunta, correcta, incorrecta1, incorrecta2, incorrecta3) {
+        this.pregunta = pregunta;
+        this.respuestaCorrecta = correcta;
+        this.respuestaIncorrecta1 = incorrecta1;
+        this.respuestaIncorrecta2 = incorrecta2;
+        this.respuestaIncorrecta3 = incorrecta3;
+    }
+
+    obtenerRespuestasAleatorias() {
+        const respuestas = [
+            this.respuestaCorrecta,
+            this.respuestaIncorrecta1,
+            this.respuestaIncorrecta2,
+            this.respuestaIncorrecta3,
+        ];
+        return respuestas.sort(() => Math.random() - 0.5);
+    }
+}
+
+const cuestionario1 = [
+    new Pregunta("cuanto es 2 + 2?", "4", "3", "2", "5"),
+    new Pregunta("¿Capital de Francia?", "París", "Londres", "Madrid", "Roma"),
+];
+
+const quiz = new Cuestionario(cuestionario1);
+quiz.iniciarCuestionario();
 
 /*
 1️⃣1️⃣ Ejercicio: Agenda de Contactos
