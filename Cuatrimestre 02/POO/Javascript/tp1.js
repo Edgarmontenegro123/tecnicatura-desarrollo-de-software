@@ -1,3 +1,8 @@
+/*import promptSync from 'prompt-sync';
+const prompt = promptSync();*/
+// const prompt = require('prompt-sync')();
+import readlineSync from 'readline-sync';
+
 /*
 ======================================
  Ejercicios Prácticos de POO
@@ -124,7 +129,7 @@ pelicula1.setCalificacion(7);
 // let pelicula2 = new Pelicula('Batman Dark Knight', 'Christopher Nolan', 11);
 // console.log(pelicula2.getInfo());
 
-pelicula2 = new Pelicula('Batman Dark Knight', 'Christopher Nolan', 10);
+// pelicula2 = new Pelicula('Batman Dark Knight', 'Christopher Nolan', 10);
 // console.log(pelicula2.getInfo());
 
 const pelicula3 = new Pelicula('Batman Dark Knight Rises', 'Christopher Nolan', 8);
@@ -506,6 +511,72 @@ console.log(bicicleta1.mostrarInfo());*/
    - Subclases: `BotDeSoporte`, `BotDelClima`, `BotDeProgramación`.
    - Cada subclase responde de manera diferente según la entrada del usuario.
 */
+
+class Chatbot {
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
+
+    saludar() {
+        return `Hola, soy tu ${this.nombre}.\n`;
+    }
+
+    responder(mensaje) {
+        return `Lo siento, no entiendo tu consulta.`;
+    }
+}
+
+class BotDeSoporte extends Chatbot {
+    responder(mensaje) {
+        if(mensaje.toLowerCase().includes('problema')) {
+            return `Podrías describirme tu problema con más detalle? \n`
+        }
+        return 'Nuestro equipo de soporte está trabajando para brindarte una solución.';
+    }
+}
+
+class BotDelClima extends Chatbot {
+    responder(mensaje) {
+        if(mensaje.toLowerCase().includes('clima')) {
+            return `Que quisieras saber acerca del clima? \n`;
+        }
+        return 'Nuestro equipo del clima está trabajando para brindarte una solución.';
+    }
+}
+
+class BotDeProgramacion extends Chatbot {
+    responder(mensaje) {
+        if(mensaje.toLowerCase().includes('programacion')) {
+            return `Que quisieras saber acerca de la programacion? \n`;
+        }
+        return 'Nuestro equipo de programación está trabajando para brindarte una solucion.';
+    }
+}
+
+const bots = {
+    soporte: new BotDeSoporte('Bot de soporte'),
+    clima: new BotDelClima('Bot del clima'),
+    programacion: new BotDeProgramacion('Bot de programacion')
+}
+
+console.log('Bienvenido al sistema de chatbots!');
+console.log('Las opciones que puedes utilizar son: soporte, clima, programacion');
+
+// const tipoBot = prompt('Con que Bot deseas interactuar? \n', '', '').toLowerCase();
+const tipoBot = readlineSync.question('Con que Bot deseas interactuar?\n> ').toLowerCase();
+
+const botSeleccionado = bots[tipoBot];
+
+if(!botSeleccionado) {
+    console.log('No se encontro el Bot seleccionado');
+}
+else {
+    console.log(botSeleccionado.saludar());
+    // const mensajeUsuario = prompt('Por favor cuéntanos más detalles acerca de tu consulta: \n', '', '');
+    const mensajeUsuario = readlineSync.question('Por favor cuentanos mas detalles acerca de tu consulta:\n> ');
+    const mensaje = botSeleccionado.responder(mensajeUsuario);
+    console.log(`Respuesta del Bot: \n${mensaje}`);
+}
 
 /*
 🔟 Ejercicio: Sistema de Cuestionario en Línea
