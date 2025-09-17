@@ -6,7 +6,7 @@ const App: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hola Eddy! Esto es React Native!</Text>
-      {/*<Greeting />*/}
+      <Greeting />
       <Button
           title="Press Me"
           onPress={() => {

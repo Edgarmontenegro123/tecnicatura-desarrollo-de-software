@@ -13,6 +13,7 @@ yarn.lock
 .DS_Store
 .vscode/
 .idea/
+/Cuatrimestre 03/PP2/.idea/workspace.xml
 
 # Logs
 *.log
