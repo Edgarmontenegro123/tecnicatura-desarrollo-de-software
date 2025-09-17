@@ -1,0 +1,27 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Expo
+.expo/
+.expo-shared/
+
+# IDE / Sistema
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Build
+android/
+ios/
+web-build/
+dist/
+
+# Otros
+.expo-env
