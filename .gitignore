@@ -1,0 +1,75 @@
+# ========================================
+# Node / JavaScript
+# ========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ========================================
+# React Native / Expo
+# ========================================
+# Expo specific
+.expo/
+.expo-shared/
+web-build/
+.expo-dev/
+
+# Android
+android/
+*.apk
+*.aar
+*.keystore
+
+# iOS
+ios/
+Pods/
+*.xcworkspace
+*.xcuserstate
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+
+# Build outputs
+/build/
+/dist/
+/out/
+
+# Metro bundler cache
+.expo/
+.expo-shared/
+.expo-dev/
+.expo/
+.expo-shared/
+.expo-dev/
+
+# React Native generated files
+*.iml
+*.hprof
+*.orig
+*.rej
+*.swo
+*.swp
+*.tmp
+*.log
+*.patch
+
+# ========================================
+# General
+# ========================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.env
+.env.*
+*.local
+
+# ========================================
+# Testing
+# ========================================
+coverage/
+jest-html-reporters-*
