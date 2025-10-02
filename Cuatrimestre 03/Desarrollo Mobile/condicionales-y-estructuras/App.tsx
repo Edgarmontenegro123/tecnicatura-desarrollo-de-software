@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Button,
   FlatList,
@@ -6,7 +6,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from "react-native";
+} from 'react-native';
 type Task = { id: string; title: string;
   completed: boolean };
 const App: React.FC = () => {
@@ -21,16 +21,16 @@ const App: React.FC = () => {
         <Text style={styles.title}>Mis tareas</Text>
         <View style={styles.container}>
           <Button
-              title="Agregar una tarea pendiente"
+              title='Agregar una tarea pendiente'
               onPress={() =>
                   setTasks((prev) => [
                     ...prev,
-                    { id: Date.now().toString(), title: "Nueva tarea",
+                    { id: Date.now().toString(), title: 'Nueva tarea',
                       completed: false },
                   ])
               }
           />
-          <Button title="Vaciar" onPress={() => setTasks([])} />
+          <Button title='Vaciar' onPress={() => setTasks([])} />
         </View>
         <FlatList
             data={tasks}
@@ -40,7 +40,7 @@ const App: React.FC = () => {
                 <Text
                     style={{
                       paddingVertical: 8,
-                      textDecorationLine: item.completed ? "line-through" : "none",}}>{item.title}
+                      textDecorationLine: item.completed ? 'line-through' : 'none',}}>{item.title}
                 </Text>
             </TouchableOpacity>
         )}
@@ -56,8 +56,8 @@ const App: React.FC = () => {
 }
 
 const styles = StyleSheet.create({
-      container: { flex: 2, padding: 16, paddingTop: 32, backgroundColor: "white", marginTop: 16 },
-      title: { fontSize: 20, fontWeight: "300", marginBottom: 24 },
+      container: { flex: 2, padding: 16, paddingTop: 32, backgroundColor: 'white', marginTop: 16 },
+      title: { fontSize: 20, fontWeight: '300', marginBottom: 24 },
   });
 
   export default App;
