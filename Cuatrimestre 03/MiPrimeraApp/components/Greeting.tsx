@@ -1,9 +1,12 @@
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const Greeting = () => {
+type GreetingProps = {name: string};
+
+const Greeting : React.FC<GreetingProps> = ({name}) => {
     return (
         <View>
-            <Text style={styles.text}>Hola desde otro compónente!</Text>
+            <Text style={styles.text}>Hola {name}!</Text>
         </View>
         )
 }
